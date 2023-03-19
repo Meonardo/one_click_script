@@ -1417,13 +1417,13 @@ function getHTTPSCertificateWithAcme(){
         acmeSSLDays="179"
         acmeSSLServerName="buypass"
         echo
-        ${configSSLAcmeScriptPath}/acme.sh --register-account --accountemail ${acmeSSLRegisterEmailInput} --server buypass
+        ${configSSLAcmeScriptPath}/acme.sh --debug 2 --register-account --accountemail ${acmeSSLRegisterEmailInput} --server buypass
         
     elif [[ "$isDomainSSLFromLetInput" == "3" ]]; then
         
         acmeSSLServerName="zerossl"
         echo
-        ${configSSLAcmeScriptPath}/acme.sh --register-account -m ${acmeSSLRegisterEmailInput} --server zerossl
+        ${configSSLAcmeScriptPath}/acme.sh --debug 2 --register-account -m ${acmeSSLRegisterEmailInput} --server zerossl
 
     elif [[ "$isDomainSSLFromLetInput" == "4" ]]; then
         green " ================================================== "
@@ -1436,7 +1436,7 @@ function getHTTPSCertificateWithAcme(){
         ${configSSLAcmeScriptPath}/acme.sh --register-account -m ${acmeSSLRegisterEmailInput} --server google --eab-kid ${isDomainSSLGoogleEABIdInput} --eab-hmac-key ${isDomainSSLGoogleEABKeyInput}    
     else
         acmeSSLServerName="letsencrypt"
-        #${configSSLAcmeScriptPath}/acme.sh --issue -d ${configSSLDomain} --webroot ${configWebsitePath} --keylength ec-256 --days 89 --server letsencrypt
+        #${configSSLAcmeScriptPath}/acme.sh --debug 2 --issue -d ${configSSLDomain} --webroot ${configWebsitePath} --keylength ec-256 --days 89 --server letsencrypt
     fi
 
 
