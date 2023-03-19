@@ -1557,7 +1557,7 @@ function getHTTPSCertificateWithAcme(){
             
             green " 开始申请证书, acme.sh 通过 http webroot mode 从 ${acmeSSLServerName} 申请, 并使用 ran 作为临时的web服务器 "
             echo
-            ${configSSLAcmeScriptPath}/acme.sh --issue -d ${configSSLDomain} --webroot ${configWebsitePath} --keylength ec-256 --days ${acmeSSLDays} --server ${acmeSSLServerName}
+            ${configSSLAcmeScriptPath}/acme.sh --debug 2 --issue -d ${configSSLDomain} --webroot ${configWebsitePath} --keylength ec-256 --days ${acmeSSLDays} --server ${acmeSSLServerName}
 
             sleep 4
             ps -C ${ranDownloadFileName} -o pid= | xargs -I {} kill {}
